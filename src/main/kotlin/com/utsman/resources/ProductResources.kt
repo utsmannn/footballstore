@@ -1,4 +1,4 @@
-package com.utsman.controller
+package com.utsman.resources
 
 import com.utsman.entity.response.BaseResponse
 import com.utsman.entity.Product
@@ -15,7 +15,7 @@ import jakarta.ws.rs.QueryParam
 import jakarta.ws.rs.core.MediaType
 
 @Path("/product")
-class ProductController {
+class ProductResources {
 
     @Inject
     private lateinit var productService: ProductService
@@ -38,7 +38,7 @@ class ProductController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    suspend fun getProductById(@PathParam("id") id: String): BaseResponse<Product> {
+    suspend fun getProductById(@PathParam("id") id: Int): BaseResponse<Product> {
         val product = productService.getProductById(id)
         return product.toResponse()
     }
@@ -69,11 +69,11 @@ class ProductController {
     @GET
     @Path("/category/{category_id}")
     suspend fun productByCategory(
-        @PathParam("category_id") categoryId: String,
+        @PathParam("category_id") categoryId: Int,
         @QueryParam("page") page: Int,
         @QueryParam("per_page") pageSize: Int
     ): BaseResponse<Paged<Product>> {
-        if (categoryId.isEmpty()) throw BadRequestException("'category_id' invalid!")
+        if (categoryId == 0) throw BadRequestException("'category_id' invalid!")
 
         val validatePage = if (page == 0) 1 else page
         val validatePageSize = if (pageSize == 0) 10 else pageSize

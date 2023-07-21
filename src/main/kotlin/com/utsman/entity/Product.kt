@@ -1,10 +1,11 @@
 package com.utsman.entity
 
 data class Product(
-    val id: String,
+    val id: Int,
     val name: String,
     val description: String,
     val category: String,
     val price: Double,
-    val image: String
+    val image: List<String>,
+    val isPromoted: Boolean
 )

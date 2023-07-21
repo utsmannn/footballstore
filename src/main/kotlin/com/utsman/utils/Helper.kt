@@ -15,12 +15,10 @@ fun <T: Any>T?.toResponse(): BaseResponse<T> {
     }
 }
 
-suspend fun <T: Any>Any.readCsvList(name: String, mapper: (fields: List<String>) -> T): List<T> {
+fun <T: Any>Any.readCsvList(name: String, mapper: (fields: List<String>) -> T): List<T> {
     val reader = this.javaClass.classLoader.getResourceAsStream(name)
     val stream = reader?.bufferedReader()
-    val header = withContext(Dispatchers.IO) {
-        stream?.readText().orEmpty()
-    }
+    val header = stream?.readText().orEmpty()
 
     val data = header.lineSequence()
         .filter { it.isNotBlank() }

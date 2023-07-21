@@ -1,4 +1,4 @@
-package com.utsman.controller
+package com.utsman.resources
 
 import com.utsman.entity.response.BaseResponse
 import com.utsman.entity.Category
@@ -11,7 +11,7 @@ import jakarta.ws.rs.Produces
 import jakarta.ws.rs.core.MediaType
 
 @Path("/category")
-class CategoryController {
+class CategoryResources {
 
     @Inject
     private lateinit var categoryService: CategoryService

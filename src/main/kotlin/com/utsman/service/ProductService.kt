@@ -27,11 +27,11 @@ class ProductService {
         return products.generatePaged(page, pageSize)
     }
 
-    suspend fun getProductById(id: String): Product {
+    suspend fun getProductById(id: Int): Product {
         return getProducts().find { it.id == id } ?: throw ProductException.NotFound()
     }
 
-    suspend fun getProductByCategory(categoryId: String, page: Int, pageSize: Int): Paged<Product> {
+    suspend fun getProductByCategory(categoryId: Int, page: Int, pageSize: Int): Paged<Product> {
         val category = categoryService.getCategories().find { it.id == categoryId } ?: throw BadRequestException("'category_id' invalid!")
         val categoryName = category.name.lowercase()
         val productResult = getProducts().filter { it.category.lowercase() == categoryName }

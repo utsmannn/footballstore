@@ -1,5 +1,10 @@
 id,name,description
-001,Jersey,Jersey sepak bola.
-002,Shoes,Sepatu sepak bola.
-003,Accessories,Aksesori sepak bola.
-004,Jacket,Jaket sepak bola.
+1,Jersey,Apparel worn by soccer players during matches. Usually represents a specific team or national team.
+2,Goalkeeper Gear,Equipment specifically designed for goalkeepers such as gloves for better grip and protection.
+3,Soccer Shoes,Footwear designed for soccer players optimized for various playing styles and positions.
+4,Socks,Specialized socks worn by soccer players for added comfort and support during matches.
+5,Soccer Ball,The ball used in soccer matches typically featuring various designs for different tournaments or leagues.
+6,Training Equipment,Gear used for training purposes focusing on improving skills and physical attributes.
+7,Shorts,Apparel worn by soccer players during matches specifically focusing on lower body clothing.
+8,Soccer Technique Books,Books or guides aimed at helping soccer players improve their skills and techniques.
+9,Soccer Bags,Bags designed to carry soccer equipment clothing, and accessories.
