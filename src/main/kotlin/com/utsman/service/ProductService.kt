@@ -47,6 +47,6 @@ class ProductService {
 
     suspend fun getFeaturedProduct(): List<Product> {
         val product = getProducts()
-        return product.shuffled().take(5)
+        return product.filter { it.isPromoted }
     }
 }
