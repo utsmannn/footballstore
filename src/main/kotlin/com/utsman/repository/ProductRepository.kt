@@ -1,5 +1,7 @@
 package com.utsman.repository
 
+import com.utsman.entity.Banner
+import com.utsman.entity.Brand
 import com.utsman.entity.Product
 import com.utsman.utils.readCsvList
 import jakarta.enterprise.context.ApplicationScoped
@@ -16,9 +18,30 @@ class ProductRepository {
             val category = fields[4].trim()
             val promoted = fields[5].trim().toBoolean()
             val images = getImages(name)
+            val brand = fields[6].trim()
 
-            val product = Product(id, name, description, category, price, images, promoted)
-            product
+            val (categoryId, categoryName) = category.split("-")
+            val (brandId, brandName) = brand.split("-")
+
+            val productCategory = Product.MiniCategory(categoryId.toInt(), categoryName)
+            val productBrand = Product.MiniBrand(brandId.toInt(), brandName)
+
+            Product(id, name, description, productCategory, price, images, promoted, productBrand)
+        }
+    }
+
+    suspend fun readBannerCsv(): List<Banner> {
+        return readCsvList("banner.csv") { fields ->
+            val id = fields[0].trim().toInt()
+            val productId = fields[1].trim().toInt()
+            val productName = fields[2].trim()
+            val description = fields[3].trim()
+            val colorPrimary = fields[4].trim()
+            val colorAccent = fields[5].trim()
+
+            val productImage = getImages(productName).random()
+
+            Banner(id, productId, productImage, description, colorPrimary, colorAccent)
         }
     }
 

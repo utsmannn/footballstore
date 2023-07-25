@@ -1,5 +1,7 @@
 package com.utsman.service
 
+import com.utsman.entity.Banner
+import com.utsman.entity.Brand
 import com.utsman.entity.Product
 import com.utsman.entity.ProductException
 import com.utsman.entity.response.Paged
@@ -32,9 +34,12 @@ class ProductService {
     }
 
     suspend fun getProductByCategory(categoryId: Int, page: Int, pageSize: Int): Paged<Product> {
-        val category = categoryService.getCategories().find { it.id == categoryId } ?: throw BadRequestException("'category_id' invalid!")
-        val categoryName = category.name.lowercase()
-        val productResult = getProducts().filter { it.category.lowercase() == categoryName }
+        val productResult = getProducts().filter { it.category.id == categoryId }
+        return productResult.generatePaged(page, pageSize)
+    }
+
+    suspend fun getProductByBrand(brandId: Int, page: Int, pageSize: Int): Paged<Product> {
+        val productResult = getProducts().filter { it.brand.id == brandId }
         return productResult.generatePaged(page, pageSize)
     }
 
@@ -45,8 +50,12 @@ class ProductService {
         return productsResult.generatePaged(page, pageSize)
     }
 
-    suspend fun getFeaturedProduct(): List<Product> {
-        val product = getProducts()
-        return product.filter { it.isPromoted }
+    suspend fun getFeaturedProduct(page: Int, pageSize: Int): Paged<Product> {
+        val product = getProducts().filter { it.isPromoted }
+        return product.generatePaged(page, pageSize)
+    }
+
+    suspend fun getBanner(): List<Banner> {
+        return productRepository.readBannerCsv()
     }
 }
