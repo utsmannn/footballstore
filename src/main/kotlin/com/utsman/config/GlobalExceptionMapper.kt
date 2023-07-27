@@ -13,6 +13,7 @@ import jakarta.ws.rs.ext.Provider
 class GlobalExceptionMapper : ExceptionMapper<Exception> {
 
     override fun toResponse(exception: Exception?): Response {
+        exception?.printStackTrace()
         val status = when (exception) {
             is NotFoundException -> Response.Status.NOT_FOUND
             is BadRequestException -> Response.Status.BAD_REQUEST

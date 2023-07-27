@@ -42,3 +42,9 @@ fun <T>List<T>.generatePaged(page: Int, pageSize: Int): Paged<T> {
 
     return Paged(page, pageSize, hasNextProduct, items)
 }
+
+fun <T, U>Paged<T>.map(mapper: (T) -> U): Paged<U> {
+    return Paged(
+        page, perPage, hasNextPage, data.map(mapper)
+    )
+}

@@ -5,11 +5,16 @@ import com.utsman.entity.Brand
 import com.utsman.entity.Product
 import com.utsman.utils.readCsvList
 import jakarta.enterprise.context.ApplicationScoped
+import jakarta.inject.Inject
 
 @ApplicationScoped
 class ProductRepository {
 
+    @Inject
+    private lateinit var brandRepository: BrandRepository
+
     suspend fun readProductsCsv(): List<Product> {
+        val brands = brandRepository.readBrandCsv()
         return readCsvList("products.csv") { fields ->
             val id = fields[0].trim().toInt()
             val name = fields[1].trim()
@@ -23,8 +28,10 @@ class ProductRepository {
             val (categoryId, categoryName) = category.split("-")
             val (brandId, brandName) = brand.split("-")
 
+            val brandImage = brands.find { it.id == brandId.toInt() }?.image.orEmpty()
+
             val productCategory = Product.MiniCategory(categoryId.toInt(), categoryName)
-            val productBrand = Product.MiniBrand(brandId.toInt(), brandName)
+            val productBrand = Product.MiniBrand(brandId.toInt(), brandName, brandImage)
 
             Product(id, name, description, productCategory, price, images, promoted, productBrand)
         }
