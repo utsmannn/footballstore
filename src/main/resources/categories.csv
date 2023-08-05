@@ -1,11 +1,11 @@
-id,name,description
-1,Jersey,Apparel worn by soccer players during matches. Usually represents a specific team or national team.
-2,Goalkeeper Gear,Equipment specifically designed for goalkeepers such as gloves for better grip and protection.
-3,Soccer Shoes,Footwear designed for soccer players optimized for various playing styles and positions.
-4,Socks,Specialized socks worn by soccer players for added comfort and support during matches.
-5,Soccer Ball,The ball used in soccer matches typically featuring various designs for different tournaments or leagues.
-6,Training Equipment,Gear used for training purposes focusing on improving skills and physical attributes.
-7,Shorts,Apparel worn by soccer players during matches specifically focusing on lower body clothing.
-8,Soccer Technique Books,Books or guides aimed at helping soccer players improve their skills and techniques.
-9,Soccer Bags,Bags designed to carry soccer equipment clothing~~ and accessories.
-40,Other,The others of category.
+id,name,description,image
+1,Jersey,Apparel worn by soccer players during matches. Usually represents a specific team or national team.,https://images.unsplash.com/photo-1616124619460-ff4ed8f4683c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+2,Goalkeeper Gear,Equipment specifically designed for goalkeepers such as gloves for better grip and protection.,https://images.unsplash.com/photo-1677119966332-8c6e9fb0efab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+3,Soccer Shoes,Footwear designed for soccer players optimized for various playing styles and positions.,https://images.unsplash.com/photo-1511167814253-23b850fcd859?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+4,Socks,Specialized socks worn by soccer players for added comfort and support during matches.,https://images.unsplash.com/photo-1603567119308-649b6e66e478?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+5,Soccer Ball,The ball used in soccer matches typically featuring various designs for different tournaments or leagues.,https://images.unsplash.com/photo-1614632537190-23e4146777db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+6,Training Equipment,Gear used for training purposes focusing on improving skills and physical attributes.,https://images.unsplash.com/photo-1527950285759-4d9f1b69c461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+7,Shorts,Apparel worn by soccer players during matches specifically focusing on lower body clothing.,https://images.unsplash.com/photo-1607080033776-63b372e37828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+8,Soccer Technique Books,Books or guides aimed at helping soccer players improve their skills and techniques.,https://images.unsplash.com/photo-1607473129014-0afb7ed09c3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+9,Soccer Bags,Bags designed to carry soccer equipment clothing~~ and accessories.,https://images.unsplash.com/photo-1656078253923-dad3d33a12b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80
+40,Other,The others of category.,https://images.unsplash.com/photo-1565308674684-1d8c0b4433d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=900&q=80

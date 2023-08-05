@@ -18,7 +18,7 @@ class ProductRepository {
         return readCsvList("products.csv") { fields ->
             val id = fields[0].trim().toInt()
             val name = fields[1].trim()
-            val description = fields[2].trim()
+            val description = fields[2].trim().replace("~~", ",")
             val price = fields[3].trim().toDouble()
             val category = fields[4].trim()
             val promoted = fields[5].trim().toBoolean()
@@ -28,10 +28,11 @@ class ProductRepository {
             val (categoryId, categoryName) = category.split("-")
             val (brandId, brandName) = brand.split("-")
 
-            val brandImage = brands.find { it.id == brandId.toInt() }?.image.orEmpty()
+            val brandData = brands.find { it.id == brandId.toInt() }
+            val brandLogo = brandData?.logo.orEmpty()
 
             val productCategory = Product.MiniCategory(categoryId.toInt(), categoryName)
-            val productBrand = Product.MiniBrand(brandId.toInt(), brandName, brandImage)
+            val productBrand = Product.MiniBrand(brandId.toInt(), brandName, brandLogo)
 
             Product(id, name, description, productCategory, price, images, promoted, productBrand)
         }

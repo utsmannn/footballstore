@@ -17,6 +17,7 @@ data class Product(
         val id: Int,
         val name: String,
         val price: Double,
+        val category: MiniCategory,
         val isPromoted: Boolean,
         val brand: MiniBrand,
         val image: String
@@ -30,7 +31,7 @@ data class Product(
     data class MiniBrand(
         val id: Int,
         val name: String,
-        val image: String
+        val logo: String
     )
 
     fun toMiniProduct(): MiniProduct {
@@ -40,7 +41,8 @@ data class Product(
             price = price,
             isPromoted = isPromoted,
             brand = brand,
-            image = images.firstOrNull().orEmpty()
+            image = images.firstOrNull().orEmpty(),
+            category = category
         )
     }
 }

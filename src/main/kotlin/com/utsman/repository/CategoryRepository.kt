@@ -12,7 +12,8 @@ class CategoryRepository {
             val id = fields[0].trim().toInt()
             val name = fields[1].trim()
             val description = fields[2].trim()
-            Category(id, name, description)
+            val image = fields[3]
+            Category(id, name, description, image)
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.utsman.service
 
 import com.utsman.entity.Banner
-import com.utsman.entity.Brand
 import com.utsman.entity.Product
 import com.utsman.entity.ProductException
 import com.utsman.entity.response.Paged
@@ -9,7 +8,6 @@ import com.utsman.repository.ProductRepository
 import com.utsman.utils.generatePaged
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
-import jakarta.ws.rs.BadRequestException
 
 @ApplicationScoped
 class ProductService {
@@ -53,6 +51,14 @@ class ProductService {
     suspend fun getFeaturedProduct(page: Int, pageSize: Int): Paged<Product> {
         val product = getProducts().filter { it.isPromoted }
         return product.generatePaged(page, pageSize)
+    }
+
+    suspend fun getTopProduct(): List<Product> {
+        return getProducts().shuffled().take(10)
+    }
+
+    suspend fun getCuratedProduct(): List<Product> {
+        return getProducts().shuffled().take(10)
     }
 
     suspend fun getBanner(): List<Banner> {

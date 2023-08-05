@@ -110,6 +110,18 @@ class ProductResourcesV2 {
     }
 
     @GET
+    @Path("/top")
+    suspend fun getTopProduct(): BaseResponse<List<Product.MiniProduct>> {
+        return productService.getTopProduct().map { it.toMiniProduct() }.toResponse()
+    }
+
+    @GET
+    @Path("/curated")
+    suspend fun getCuratedProduct(): BaseResponse<List<Product.MiniProduct>> {
+        return productService.getCuratedProduct().map { it.toMiniProduct() }.toResponse()
+    }
+
+    @GET
     @Path("/banner")
     suspend fun getBanner(): BaseResponse<List<Banner>> {
         return productService.getBanner().toResponse()

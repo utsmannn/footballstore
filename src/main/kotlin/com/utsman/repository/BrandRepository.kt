@@ -13,7 +13,14 @@ class BrandRepository {
             val name = field[1].trim()
             val description = field[2].trim()
             val image = field[3].trim()
-            Brand(id, name, description, image)
+            val logo = getLogo(name)
+
+            Brand(id, name, description, image, logo)
         }
+    }
+
+    private fun getLogo(name: String): String {
+        val originUrl = "https://utsmannn.github.io/images/logo/{brand}_png.png"
+        return originUrl.replace("{brand}", name.lowercase().replace(" ", "_"))
     }
 }
