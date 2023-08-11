@@ -41,6 +41,17 @@ class ProductResourcesV2 {
     }
 
     @GET
+    @Path("/thumbnail")
+    @Produces(MediaType.APPLICATION_JSON)
+    suspend fun getProductsByIds(
+        @QueryParam("id") id: String
+    ): BaseResponse<List<Product.MiniProduct>>  {
+        val idInt = id.split(",").mapNotNull { it.toIntOrNull() }
+        val products = productService.getProductByIds(id = idInt.toIntArray())
+        return products.map { it.toMiniProduct() }.toResponse()
+    }
+
+    @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     suspend fun getProductById(@PathParam("id") id: Int): BaseResponse<Product> {
@@ -53,14 +64,16 @@ class ProductResourcesV2 {
     suspend fun searchProductByName(
         @QueryParam("q") name: String,
         @QueryParam("page") page: Int,
-        @QueryParam("per_page") pageSize: Int
+        @QueryParam("per_page") pageSize: Int,
+        @QueryParam("category") categoryId: Int,
+        @QueryParam("brand") brandId: Int
     ): BaseResponse<Paged<Product.MiniProduct>> {
 
         // need validate here because quarkus param not support default value
         val validatePage = if (page == 0) 1 else page
         val validatePageSize = if (pageSize == 0) 10 else pageSize
 
-        val product = productService.searchProductByName(name, validatePage, validatePageSize)
+        val product = productService.searchProductByName(name, validatePage, validatePageSize, categoryId, brandId)
         return product.map { it.toMiniProduct() }.toResponse()
     }
 

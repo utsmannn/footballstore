@@ -27,6 +27,11 @@ class ProductService {
         return products.generatePaged(page, pageSize)
     }
 
+    suspend fun getProductByIds(vararg id: Int): List<Product> {
+        val products = getProducts()
+        return id.map { i -> products.find { it.id == i } }.filterNotNull()
+    }
+
     suspend fun getProductById(id: Int): Product {
         return getProducts().find { it.id == id } ?: throw ProductException.NotFound()
     }
@@ -41,8 +46,22 @@ class ProductService {
         return productResult.generatePaged(page, pageSize)
     }
 
-    suspend fun searchProductByName(name: String, page: Int, pageSize: Int): Paged<Product> {
+    suspend fun searchProductByName(name: String, page: Int, pageSize: Int, categoryId: Int, brandId: Int): Paged<Product> {
         val productsResult = getProducts().filter { it.name.lowercase().contains(name.lowercase()) }
+            .run {
+                if (categoryId != 0) {
+                    filter { it.category.id == categoryId }
+                } else {
+                    this
+                }
+            }
+            .run {
+                if (brandId != 0) {
+                    filter { it.brand.id == brandId }
+                } else {
+                    this
+                }
+            }
         if (productsResult.isEmpty()) throw ProductException.NotFound()
 
         return productsResult.generatePaged(page, pageSize)

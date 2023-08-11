@@ -56,7 +56,7 @@ class ProductResources {
         val validatePage = if (page == 0) 1 else page
         val validatePageSize = if (pageSize == 0) 10 else pageSize
 
-        val product = productService.searchProductByName(name, validatePage, validatePageSize)
+        val product = productService.searchProductByName(name, validatePage, validatePageSize, 0, 0)
         return product.toResponse()
     }
 
