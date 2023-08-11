@@ -2,7 +2,7 @@
 
 ### Display all brands
 ```bash
-{{base_url}}/category
+{{base_url}}/brand
 ```
 
 <details>
