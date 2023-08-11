@@ -1,3 +1,49 @@
 site_name: Football Store API
 theme:
   name: material
+  features:
+    - navigation.sections
+    - navigation.footer
+    - navigation.top
+    - content.code.copy
+  palette:
+    - scheme: slate
+      primary: green
+      accent: gray
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: green
+      accent: gray
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+repo_name: utsmannn/footballstore
+repo_url: https://github.com/utsmannn/footballstore
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - def_list
+  - tables
+
+plugins:
+  - glightbox
+
+nav:
+  - Home: index.md
+  - Base Urls: baseurl.md
+  - End Points:
+      - Products: product.md
+      - Product Single: product_single.md
+      - Category: category.md
+      - Brand: brand.md
